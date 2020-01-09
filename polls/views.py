@@ -36,5 +36,5 @@ def results(request, question_id):
     return HttpResponse(response.format(question_id))
 
 def vote(request, question_id):
-    response = "You're voting onquestion {}"
+    response = "You're voting on question {}"
     return HttpResponse(response.format(question_id))
