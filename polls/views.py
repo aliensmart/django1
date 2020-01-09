@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 # from django.template import loader
 from .models import Question, Choice
 
@@ -32,8 +33,8 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
-    response = "You're looking at the results of question {}"
-    return HttpResponse(response.format(question_id))
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/result.html', {'question': question})
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
